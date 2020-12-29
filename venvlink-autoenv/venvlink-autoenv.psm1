@@ -75,12 +75,21 @@ function RunScript {
   param ($scriptFile)
 
   $scriptFile = Get-Item $scriptFile
-
+  $scriptDir = $scriptFile.Directory 
   if (AuthorizeFile $scriptFile.FullName) {
     Write-Verbose "Running script: $scriptFile"
-
+    
     #Set $PSScriptRoot for convenience
-    $block = "param (`$PSScriptRoot)`n" + (Get-Content $scriptFile.FullName -Raw)
+    $block = "param (`$PSScriptRoot)`n" 
+    #Give ./venv/venvlink-autoenv.ps1 access to
+    # $workdir. This is needed so that 
+    # 1) virtual environment can be activated by cd'ing
+    #    into any subdirectory if project root 
+    # 2) Hardcoding directories in venvlink-autoenv
+    #    files is not needed -> Projects can be relocated.
+    $block += "`$workdir = '$scriptDir'`n"
+    $block += (Get-Content $scriptFile.FullName -Raw)
+    
     $output = Invoke-Command `
       -ScriptBlock ([scriptblock]::Create(($block))) `
       -ArgumentList $scriptFile.DirectoryName
