@@ -27,7 +27,7 @@ $script:currentProjectDir = $null
 $script:lastfoundProjectDir = $null
 
 $global:venvlink_autoenv = New-Object PSObject -Property ([ordered]@{
-  AUTH_FILE = '~/venvlink_autoenv_auth'
+  AUTH_FILE = '~/venvlink-autoenv-auth'
   ENV_FILENAME = 'venvlink-autoenv.ps1'
   ENV_LEAVE_FILENAME = 'venvlink-autoenv.leave.ps1'
   ENABLE_LEAVE = $true

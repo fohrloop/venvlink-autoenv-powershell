@@ -1,0 +1,2 @@
+Copy-Item $PSScriptRoot/readme.md $PSScriptRoot/venvlink-autoenv/about_venvlink-autoenv.help.txt
+Publish-Module -Path $PSScriptRoot/venvlink-autoenv -NuGetApiKey $env:POWERSHELL_GALLERY_API_KEY -Verbose
