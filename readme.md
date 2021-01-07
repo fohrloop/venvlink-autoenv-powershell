@@ -16,7 +16,7 @@ The [venvlink](https://github.com/np-8/venvlink) creates a folder called `venv` 
 ## Option 1
 Run the following command in the Powershell to download the package from [PowerShell Gallery](https://www.powershellgallery.com/packages/venvlink-autoenv):
 ```
-Install-Module venvlink-autoenv
+Install-Module venvlink-autoenv -Scope CurrentUser
 ```
 
 Then, run 
